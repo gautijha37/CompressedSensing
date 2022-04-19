@@ -1,0 +1,7 @@
+* C:\Users\Gautam Jha\Documents\LTspiceXVII\spice_matlab_check.asc
+V1 N001 0 PULSE(0 1 10n 50p 50p 10n 20n)
+R1 N002 N001 1k
+C1 N002 0 1p
+.tran 0.1u
+.backanno
+.end

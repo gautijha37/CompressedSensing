@@ -1,0 +1,1 @@
+start "C:\Program Files\LTC\LTspiceXVII\XVIIx64.exe -b" "C:\Users\gauti\Documents\MATLAB\cmi_11b_prbs.net"

@@ -1,0 +1,1 @@
+start "C:\Program Files\LTC\LTspiceXVII\XVIIx64.exe -b" "C:\Users\gauti\Documents\MATLAB\cmi_7b_SnH.net"

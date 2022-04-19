@@ -1,0 +1,35 @@
+Circuit: * C:\Users\gauti\Documents\MATLAB\cmi_7b_SnH.asc
+
+Warning: Multiple definitions of model "aons66402" Type: Vdmos1
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Ignoring BSIM parameter XL
+Ignoring BSIM parameter XW
+Unknown node in .ic card: "vp" -- ignoring
+Unknown node in .ic card: "q0" -- ignoring
+Unknown node in .ic card: "q1" -- ignoring
+Unknown node in .ic card: "d0" -- ignoring
+Unknown node in .ic card: "d1" -- ignoring
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Warning: Pd = 0 is less than W.
+Warning: Ps = 0 is less than W.
+Per .tran options, skipping operating point for transient analysis.
+
+Date: Mon Oct 25 20:40:29 2021
+Total elapsed time: 1.159 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 64500
+traniter = 64500
+tranpoints = 26148
+accept = 19256
+rejected = 6892
+matrix size = 44
+fillins = 0
+solver = Normal
+Matrix Compiler1: 1.56 KB object code size  0.6/0.4/[0.2]
+Matrix Compiler2: 2.84 KB object code size  0.4/0.6/[0.2]
+

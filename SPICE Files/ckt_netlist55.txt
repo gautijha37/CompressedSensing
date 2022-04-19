@@ -1,0 +1,54 @@
+* C:\Users\Gautam Jha\Documents\LTspiceXVII\cmi55.asc
+V1 VDC 0 0.9
+V2 Vin VDC SINE(0 0.4 {X/T})
+A1 Vin 0 0 VCLK 0 0 V_snh 0 SAMPLEHOLD
+V3 VDD 0 1.8
+A2 N002 VSS VCLK VSS VSS ~PRBS_OUT PRBS_OUT VSS DFLOP Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+A3 PRBS_OUT VSS VCLK VSS VSS VSS N003 VSS DFLOP Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+A4 N003 VSS VCLK VSS VSS VSS N004 VSS DFLOP Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+A5 N004 VSS VCLK VSS VSS VSS N005 VSS DFLOP Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+A6 N005 VSS VCLK VSS VSS VSS N006 VSS DFLOP Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+A7 N006 VSS VCLK VSS VSS VSS N007 VSS DFLOP Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+A8 N007 VSS VCLK VSS VSS VSS N001 VSS DFLOP Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+A9 N001 PRBS_OUT VSS VSS VSS N002 VSS VSS XOR Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+V4 VCLK 0 PULSE({VDD} {VSS} {Tp} 500p 500p {Tp} {T})
+A10 VCLK 0 0 0 0 ~VCLK 0 0 BUF Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+G1 VDD N008 V_snh 0 {G}
+G2 N010 0 V_snh 0 {G}
+S1 N008 Vp1 CHARGE1 0 MYSW
+S2 Vp1 N010 DISCHARGE1 0 MYSW
+S3 N010 VDC ~DISCHARGE1 0 MYSW
+S4 VDC N008 ~CHARGE1 0 MYSW
+C1 Vp1 0 5p
+S5 VDC Vp1 RESET1 0 MYSW
+A11 ~VCLK PRBS_OUT ~RESET1 VDD VDD ~CHARGE1 CHARGE1 0 AND Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+A12 ~VCLK ~PRBS_OUT ~RESET1 VDD VDD ~DISCHARGE1 DISCHARGE1 0 AND Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+V5 VSS 0 0
+V6 N009 0 PULSE({VSS} {VDD} {4*T+Tp} 500p 500p {3*T+Tp} {8*T})
+A13 RESET1 0 0 0 0 ~RESET1 0 0 BUF Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+G3 VDD N011 V_snh 0 {G}
+G4 N012 0 V_snh 0 {G}
+S6 N011 Vp2 CHARGE2 0 MYSW
+S7 Vp2 N012 DISCHARGE2 0 MYSW
+S8 N012 VDC ~DISCHARGE2 0 MYSW
+S9 VDC N011 ~CHARGE2 0 MYSW
+C2 Vp2 0 5p
+S10 VDC Vp2 RESET2 0 MYSW
+V7 RESET2 0 PULSE({VDD} {VSS} {4*T} 500p 500p {4*T+Tp1} {8*T})
+A14 RESET2 0 0 0 0 ~RESET2 0 0 BUF Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+A15 ~VCLK PRBS_OUT ~RESET2 VDD VDD ~CHARGE2 CHARGE2 0 AND Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+A16 ~VCLK ~PRBS_OUT ~RESET2 VDD VDD ~DISCHARGE2 DISCHARGE2 0 AND Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+A17 VSS VSS VSS INIT N009 0 RESET1 0 OR Vhigh = 1.8 Vlow = 0 Trise = {tff_rise} Tfall = {tff_rise} Td = {td_DFF}
+V8 INIT 0 PULSE({VSS} {VDD} 0 500p 500p {Tp} {1000*T})
+.include tsmc018.txt
+.LIB opamp.sub
+.model MYSW SW(Ron=1 Roff=100Meg Vt=.9 Vh=0)
+.ic V(vp) = 0 V(Q0) = 0 V(Q1) = 0 V(D0) = 0 V(D1) = 0
+.options gmin = 1e-10
+.options abstol = 1e-10
+.options reltol = 0.003
+.param G = 0.0001
+.param VDD=1.8V VSS=0V td_DFF=50p T=40n Tp=20n tff_rise=50p Tp1=20n
+.tran {80*T} uic
+.backanno
+.end

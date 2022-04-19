@@ -1,0 +1,28 @@
+Circuit: * C:\Users\gauti\Documents\MATLAB\prbs11bit.asc
+
+Unknown node in .ic card: "q0" -- ignoring
+Unknown node in .ic card: "q1" -- ignoring
+Unknown node in .ic card: "d0" -- ignoring
+Unknown node in .ic card: "d1" -- ignoring
+WARNING: Less than two connections to node VDD.  This node is used by V1.
+WARNING: Less than two connections to node ~PRBS_OUT.  This node is used by A1.
+WARNING: Less than two connections to node ~VCLK.  This node is used by A9.
+Direct Newton iteration for .op point succeeded.
+
+Date: Fri Oct 15 10:56:05 2021
+Total elapsed time: 13.893 seconds.
+
+tnom = 27
+temp = 27
+method = modified trap
+totiter = 1614543
+traniter = 1614538
+tranpoints = 397351
+accept = 299121
+rejected = 98230
+matrix size = 20
+fillins = 0
+solver = Normal
+Matrix Compiler1: 774 bytes object code size  0.3/0.2/[0.1]
+Matrix Compiler2: 1.15 KB object code size  0.2/0.3/[0.1]
+
